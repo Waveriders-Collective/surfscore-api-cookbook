@@ -21,8 +21,7 @@ import urllib.request
 
 API = os.environ.get("SS_API", "https://api.surfscore.live")
 KEY = os.environ.get("SS_KEY")
-# Name the client. Python's default "Python-urllib/3.x" can be refused at the network
-# edge before the request reaches the API, so never rely on it.
+# Name the client, so its requests are easy to find when asking for support.
 USER_AGENT = "surfscore-cookbook/1.0 (+https://github.com/Waveriders-Collective/surfscore-api-cookbook)"
 
 COLS = [
