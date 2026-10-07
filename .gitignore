@@ -1,0 +1,11 @@
+*.csv
+*.geojson
+# API keys live in .env (or .env.local, .env.prod, ...); never commit them.
+.env
+.env.*
+!.env.example
+smoke-out/
+__pycache__/
+.DS_Store
+# Optional local list of names that must never appear in this public repo (tests/check_public.sh).
+.public-denylist

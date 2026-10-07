@@ -1,0 +1,19 @@
+# SurfScore External API
+
+> Read-only B2B API for an organisation's own cellular coverage data: walk/drive-test sessions, per-second telemetry (RSRP, RSRQ, SINR, PCI, resolved band, ARFCN, GPS), heatmaps, SurfScan router scan sessions, H3 coverage rollups, and session-lifecycle webhooks. Auth: `Authorization: Bearer ss_live_...` (per-org key from https://surfscore.live → avatar → API Keys). JSON envelope `{data, attribution, meta}`; cursor pagination via `data.next_cursor`; 300 req/min/key; errors are RFC 9457 problem+json.
+
+## Docs
+- [OpenAPI 3.1 spec](https://api.surfscore.live/v1/openapi.json): every endpoint, parameter and response shape
+- [Interactive reference](https://api.surfscore.live/v1/docs): browsable version of the spec
+- [Cookbook repo](https://github.com/Waveriders-Collective/surfscore-api-cookbook): quickstart README, AGENTS.md with non-obvious rules, runnable examples
+- [AGENTS.md](https://raw.githubusercontent.com/Waveriders-Collective/surfscore-api-cookbook/main/AGENTS.md): read this first if you are a coding agent
+
+## Examples
+- [Export one session to CSV](https://raw.githubusercontent.com/Waveriders-Collective/surfscore-api-cookbook/main/examples/export_session.sh)
+- [Export a whole map/circuit to CSV + GeoJSON](https://raw.githubusercontent.com/Waveriders-Collective/surfscore-api-cookbook/main/examples/export_map.py)
+- [Session summary + heatmap grid](https://raw.githubusercontent.com/Waveriders-Collective/surfscore-api-cookbook/main/examples/session_report.sh)
+- [Webhook listener with signature verification](https://raw.githubusercontent.com/Waveriders-Collective/surfscore-api-cookbook/main/examples/webhook_listener.py)
+
+## Optional
+- [Dashboard](https://dashboard.surfscore.live): where the same sessions and maps are viewed by humans; map ids appear in its URLs
+- Attribution: `attribution.text` from any response must accompany redistributed data. SurfScore is a trademark of Waveriders Collective Inc.
