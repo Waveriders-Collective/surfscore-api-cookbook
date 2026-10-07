@@ -53,9 +53,9 @@ and `README.md`, then the relevant file in `examples/`. The full machine spec is
   reports. A response **without** `X-Request-Id` (often an HTML page) never
   reached the API: a proxy or the network edge refused it. Report the status,
   `Server` and `CF-Ray` headers instead.
-- **User-Agent**: always send a descriptive one (the examples send
-  `surfscore-cookbook/1.0 (+repo url)`). Python's default `Python-urllib/3.x`
-  can be refused at the edge before the request reaches the API.
+- **User-Agent**: send a descriptive one that names your integration (the
+  examples send `surfscore-cookbook/1.0 (+repo url)`). It makes your requests
+  easy to find when you ask for support. Library defaults are accepted.
 - **Webhooks**: `POST /v1/webhooks` returns a `whsec_` secret once. Payloads are
   signed; see `examples/webhook_listener.py` for verification.
 

@@ -93,8 +93,9 @@ for probe in "/v1/scans?limit=1|read:scans" "/v1/coverage/hexes?from=2100-01-01T
     *)   bad "$path -> $code $(problem)";;
   esac
 done
-# Customers call the API from many HTTP libraries. A refusal without X-Request-Id never
-# reached the API gateway: the network edge (or a proxy) rejected that client.
+# Regression check: customers call the API from many HTTP libraries, and every one of
+# these must be accepted. A refusal without X-Request-Id never reached the API gateway:
+# the network edge (or a proxy) rejected that client.
 for ua in "Python-urllib/3.12" "python-requests/2.32.3" "Go-http-client/1.1" "node" "surfscore-cookbook/1.0"; do
   code=$(curl -sS --retry 2 -o /dev/null -D "$OUT/ua.headers" -w '%{http_code}' -A "$ua" "$API/v1/sessions?limit=1" "${auth[@]}")
   if [ "$code" = 200 ]; then ok "User-Agent '$ua' accepted"
